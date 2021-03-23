@@ -435,7 +435,7 @@ describe('tokens', () => {
       })
       .then(() => {
         const sortedtoken = testTokens.sort((a, b) =>
-          a.status > b.status ? 1 : -1
+          a.status >= b.status ? 1 : -1
         )
         cy.get('[data-testid*="token-card"]').each((val, index) => {
           const testID = val.attr('data-testid')
@@ -451,7 +451,7 @@ describe('tokens', () => {
       })
       .then(() => {
         const sortedtoken = testTokens
-          .sort((a, b) => (a.status > b.status ? 1 : -1))
+          .sort((a, b) => (a.status >= b.status ? 1 : -1))
           .reverse()
         cy.get('[data-testid*="token-card"]').each((val, index) => {
           const testID = val.attr('data-testid')
