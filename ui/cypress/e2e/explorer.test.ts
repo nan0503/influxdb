@@ -536,7 +536,7 @@ describe('DataExplorer', () => {
     })
 
     it('can filter aggregation functions by name from script editor mode', () => {
-      cy.getByTestID('input-field')
+      cy.getByTestID('flux-toolbar-search--input')
         .clear() //TODO (zoe) when cypress resolves bug remove clear  https://github.com/cypress-io/cypress/issues/5480
         .type('covariance')
         .should('have.value', 'covariance')
@@ -899,8 +899,10 @@ describe('DataExplorer', () => {
             .trigger('mousedown', {force: true})
             .trigger('mousemove', {clientY: 5000})
             .trigger('mouseup')
+            .then(() => {
+              cy.get(`[title="${numLines}"]`).should('be.visible')
+            })
         })
-        cy.get(`[title="${numLines}"]`).should('be.visible')
       })
     })
   })
