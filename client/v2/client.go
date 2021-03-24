@@ -116,8 +116,11 @@ func NewHTTPClient(conf HTTPConfig) (Client, error) {
 		TLSClientConfig: &tls.Config{
 			InsecureSkipVerify: conf.InsecureSkipVerify,
 		},
-		Proxy:       conf.Proxy,
-		DialContext: conf.DialContext,
+		Proxy:               conf.Proxy,
+		DialContext:         conf.DialContext,
+		MaxIdleConns:        20,
+		MaxIdleConnsPerHost: 20,
+		MaxConnsPerHost:     20,
 	}
 	if conf.TLSConfig != nil {
 		tr.TLSClientConfig = conf.TLSConfig
