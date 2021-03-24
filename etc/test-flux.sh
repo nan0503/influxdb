@@ -32,8 +32,10 @@ build_test_harness() {
 }
 
 run_integration_tests() {
-  log "Running integration tests..."
+  log "Running flux integration tests..."
   ./fluxtest -v -p flux.zip
+  log "Running influxdb integration tests..."
+  ./fluxtest -v -p query/stdlib
 }
 
 cleanup() {
